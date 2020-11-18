@@ -364,8 +364,7 @@ function LintCodebase() {
             cat "${TMPFILE}"
             fatal "Failed to assert TAP output for ${LINTER_NAME} linter"
           else
-            # Success
-            info "Successfully validation in the expected TAP format for ${F[W]}[${LINTER_NAME}]"
+            info "TAP output validated successfully for ${LINTER_NAME}"
           fi
         else
           fatal "No TAP expected file found at:[${EXPECTED_FILE}]"
