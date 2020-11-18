@@ -361,10 +361,8 @@ function LintCodebase() {
             #############################################
             # We failed to compare the reporting output #
             #############################################
-            error "Failed to assert TAP output:[${LINTER_NAME}]"!
-            info "Please validate the asserts!"
             cat "${TMPFILE}"
-            exit 1
+            fatal "Failed to assert TAP output for ${LINTER_NAME} linter"
           else
             # Success
             info "Successfully validation in the expected TAP format for ${F[W]}[${LINTER_NAME}]"
