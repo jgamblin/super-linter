@@ -29,10 +29,12 @@ function TransformTAPDetails() {
     echo "${DATA}" \
     | awk 'BEGIN{RS="\n";ORS="\\n"}1' \
     | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" \
+    | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' \
     | sed -r "s/\s\([0-9]*\sms\)//g" \
     | sed -r "s/\s[0-9]*ms//g" \
     | sed -r "s/S[0-9]{4}//g" \
     | sed -r "s/js:[0-9]*:[0-9]*/js/g" \
+    | sed -r "s/[.0-9]*\sseconds/seconds/g" \
     | tr ':' ' '
   fi
 }
